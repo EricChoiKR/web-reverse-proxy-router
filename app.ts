@@ -1,28 +1,31 @@
-import * as express from "express";
-import * as subdomain from "express-subdomain";
 import * as config from "config";
 
-const server = express();
+// Express
+import * as express from "express";
+import * as subdomain from "express-subdomain";
 
-const blog_router = express.Router();
+const app = express();
 
-server.get("/", (req, res) => {
-  console.log("/");
-  res.send("OK");
+const basic_router = express.Router();
+const homepage_router = express.Router();
+const milkyway_router = express.Router();
+
+milkyway_router.get("/", (req, res) => {
+  console.log("milkyway root");
+  res.send("Milkyway Root");
 });
 
-// Blog
-blog_router.get("/", (req, res) => {
-  console.log("blog");
-  res.send("Blog");
+basic_router.use(subdomain("blog", milkyway_router));
+
+homepage_router.get("/", (req, res) => {
+  console.log("homepage root");
+  res.send("Homepage Root");
 });
 
-server.use(subdomain("blog", blog_router));
+basic_router.use(homepage_router);
 
-server.listen(config.get("port"), (req, res, error) => {
-  if (error) {
-    console.log(error);
-    res.send(error);
-  }
-  console.log("Running server on port " + config.get("port"));
+app.use(basic_router);
+
+app.listen(config.get("port"), error => {
+  console.log("Homepage server start", config.get("port"));
 });

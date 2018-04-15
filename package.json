@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "start": "NODE_ENV=development nodemon app.ts",
+    "start": "NODE_ENV=staging nodemon app.ts",
     "build": "rm -rf dist/; tsc"
   },
   "repository": {
