@@ -28,6 +28,9 @@ for (const subdomain_setting of config.get("subdomain")) {
   sub_router.all("/*", (req, res) => {
     http_proxy.web(req, res, {
       target: http_mode + subdomain_setting.host + ":" + subdomain_setting.port
+    }, error => {
+      console.log(error);
+      res.send("Error!");
     });
   });
   router.use(subdomain(subdomain_setting.name, sub_router));
