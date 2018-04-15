@@ -38,7 +38,7 @@ for (const subdomain_setting of config.get("subdomain")) {
 
 if (config.get("domain")) {
   router.get("/", (req, res) => {
-    res.send(config.get("domain.host") + ":" + config.get("domain.port"));
+    res.send("OK");
   });
 }
 
