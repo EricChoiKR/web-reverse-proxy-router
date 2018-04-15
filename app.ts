@@ -1,31 +1,49 @@
 import * as config from "config";
+import * as process from "process";
+import * as fs from "fs";
 
-// Express
+// ExpressJS
 import * as express from "express";
 import * as subdomain from "express-subdomain";
+import * as httpProxy from "http-proxy";
 
-const app = express();
+let http_mode;
+switch (process.env.NODE_ENV) {
+  case "production":
+    http_mode = "https://";
+    break;
+  case "staging":
+    http_mode = "http://";
+    break;
+  default:
+    http_mode = "http://";
+}
 
-const basic_router = express.Router();
-const homepage_router = express.Router();
-const milkyway_router = express.Router();
+const server = express();
+const router = express.Router();
 
-milkyway_router.get("/", (req, res) => {
-  console.log("milkyway root");
-  res.send("Milkyway Root");
-});
+for (const subdomain_setting of config.get("subdomain")) {
+  const sub_router = express.Router();
+  const http_proxy = httpProxy.createProxyServer();
+  sub_router.all("/*", (req, res) => {
+    http_proxy.web(req, res, {
+      target: http_mode + subdomain_setting.host + ":" + subdomain_setting.port
+    });
+  });
+  router.use(subdomain(subdomain_setting.name, sub_router));
+}
 
-basic_router.use(subdomain("blog", milkyway_router));
+if (config.get("domain")) {
+  router.get("/", (req, res) => {
+    res.send(config.get("domain.host") + ":" + config.get("domain.port"));
+  });
+}
 
-homepage_router.get("/", (req, res) => {
-  console.log("homepage root");
-  res.send("Homepage Root");
-});
+server.use(router);
 
-basic_router.use(homepage_router);
-
-app.use(basic_router);
-
-app.listen(config.get("port"), error => {
-  console.log("Homepage server start", config.get("port"));
+server.listen(config.get("port"), error => {
+  if (error) {
+    console.log(error);
+  }
+  console.log(`Milk Routing Server listening on ${config.get("host")}:${config.get("port")}`);
 });

@@ -1,3 +1,15 @@
 {
-  "port": 80
+  "host": "",
+  "port": 0,
+  "domain": {
+    "host": "",
+    "port": 0
+  },
+  "subdomain": [
+    {
+      "name": "",
+      "host": "",
+      "port": 0
+    }
+  ]
 }

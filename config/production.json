@@ -1,3 +1,20 @@
 {
-  "port": 80
+  "host": "milkgun.kr",
+  "port": 80,
+  "domain": {
+    "host": "milkgun.kr",
+    "port": 9000
+  },
+  "subdomain": [
+    {
+      "name": "blog",
+      "host": "blog.milkgun.kr",
+      "port": 3000
+    },
+    {
+      "name": "cloud",
+      "host": "cloud.milkgun.kr",
+      "port": 4000
+    }
+  ]
 }

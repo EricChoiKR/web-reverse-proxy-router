@@ -1,10 +1,11 @@
 {
-  "name": "milk-web-server",
+  "name": "milk-routing-server",
   "version": "1.0.0",
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "start": "NODE_ENV=staging nodemon app.ts",
+    "start": "NODE_ENV=production rm -rf dist/; tsc; node dist/app.js",
+    "start:dev": "NODE_ENV=staging nodemon app.ts",
     "build": "rm -rf dist/; tsc"
   },
   "repository": {
@@ -22,6 +23,7 @@
     "config": "^1.30.0",
     "express": "^4.16.3",
     "express-subdomain": "^1.0.5",
+    "http-proxy": "^1.16.2",
     "typescript": "^2.8.1"
   }
 }

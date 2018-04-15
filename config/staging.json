@@ -1,3 +1,25 @@
 {
-  "port": 80
+  "host": "milkgun.kr",
+  "port": 8000,
+  "domain": {
+    "host": "milkgun.kr",
+    "port": 9000
+  },
+  "subdomain": [
+    {
+      "name": "dev",
+      "host": "dev.milkgun.kr",
+      "port": 9900
+    },
+    {
+      "name": "devblog",
+      "host": "devblog.milkgun.kr",
+      "port": 3300
+    },
+    {
+      "name": "devcloud",
+      "host": "devcloud.milkgun.kr",
+      "port": 4400
+    }
+  ]
 }
