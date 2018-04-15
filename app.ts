@@ -3,6 +3,10 @@ import * as config from "config";
 
 const server = express();
 
+server.get("/", (req, res) => {
+  res.send("OK");
+});
+
 server.listen(config.get("port"), (req, res, error) => {
   if (error) {
     console.log(error);
