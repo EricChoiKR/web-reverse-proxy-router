@@ -5,7 +5,7 @@
     "."
   ],
   "env": {
-    "NODE_ENV": "development"
+    "NODE_ENV": "staging"
   },
   "execMap": {
     "ts": "ts-node"

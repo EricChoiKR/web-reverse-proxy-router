@@ -10,7 +10,7 @@ import * as httpProxy from "http-proxy";
 let http_mode;
 switch (process.env.NODE_ENV) {
   case "production":
-    http_mode = "https://";
+    http_mode = "http://"; // Apply temporary HTTP before certificate SSL
     break;
   case "staging":
     http_mode = "http://";
