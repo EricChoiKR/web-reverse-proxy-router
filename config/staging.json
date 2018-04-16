@@ -1,6 +1,7 @@
 {
   "host": "milkgun.kr",
   "port": 8000,
+  "http_mode": "http",
   "domain": {
     "host": "milkgun.kr",
     "port": 9000

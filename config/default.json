@@ -1,6 +1,7 @@
 {
   "host": "",
   "port": 0,
+  "http_mode": "",
   "domain": {
     "host": "",
     "port": 0
