@@ -4,9 +4,11 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "start": "rm -rf dist/; tsc; NODE_ENV=production node dist/app.js",
+    "start": "nodemon app.ts",
     "start:staging": "nodemon app.ts",
-    "build": "rm -rf dist/; tsc"
+    "start:production": "rm -rf dist/; tsc; NODE_ENV=production node dist/app.js",
+    "build:staging": "rm -rf dist/; NODE_ENV=staging tsc",
+    "build:production": "rm -rf dist/; NODE_ENV=prod tsc"
   },
   "repository": {
     "type": "git",
