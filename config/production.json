@@ -3,18 +3,18 @@
   "port": 80,
   "http_mode": "http",
   "domain": {
-    "host": "milkgun.kr",
+    "host": "localhost",
     "port": 9000
   },
   "subdomain": [
     {
       "name": "blog",
-      "host": "blog.milkgun.kr",
+      "host": "localhost",
       "port": 3000
     },
     {
       "name": "cloud",
-      "host": "cloud.milkgun.kr",
+      "host": "localhost",
       "port": 4000
     }
   ]

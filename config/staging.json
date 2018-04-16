@@ -3,23 +3,23 @@
   "port": 8000,
   "http_mode": "http",
   "domain": {
-    "host": "milkgun.kr",
+    "host": "localhost",
     "port": 9000
   },
   "subdomain": [
     {
       "name": "dev",
-      "host": "dev.milkgun.kr",
+      "host": "localhost",
       "port": 9900
     },
     {
       "name": "devblog",
-      "host": "devblog.milkgun.kr",
+      "host": "localhost",
       "port": 3300
     },
     {
       "name": "devcloud",
-      "host": "devcloud.milkgun.kr",
+      "host": "localhost",
       "port": 4400
     }
   ]
